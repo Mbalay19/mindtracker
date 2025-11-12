@@ -1,0 +1,26 @@
+### 🏠 Obtener el index.html (opcional)
+GET http://localhost:2345/
+
+### 👥 Obtener todos los usuarios
+GET http://localhost:2345/users
+
+### ➕ Crear un nuevo usuario
+POST http://localhost:2345/users
+Content-Type: application/json
+
+{
+  "username": "mathias"
+}
+
+### 🏋️ Añadir un ejercicio a un usuario
+POST http://localhost:2345/users/69145acce7faec9cab593224/moods
+Content-Type: application/json
+
+{
+  "mood": 7,
+  "notes": "Estoy desarrollando alta app",
+  "date": "2025-11-12"
+}
+
+### 📜 Obtener logs de un usuario
+GET http://localhost:2345/users/69145acce7faec9cab593224/logs
