@@ -1,0 +1,293 @@
+/* Import Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Paleta de colores tirando a zen. TO DO: pasar a tailwind quizás */
+:root {
+  --primary-color: #a8dadc;        /* azul agua suave */
+  --secondary-color: #457b9d;      /* azul grisáceo calmado */
+  --accent-color: #f1faee;         /* blanco cálido */
+  --success-color: #88c9bf;        /* verde menta relajante */
+  --warning-color: #f4e285;        /* amarillo arena claro */
+  --dark-bg: #f0f4f5;              /* fondo general claro */
+  --darker-bg: #dfe6e9;            /* fondo un poco más contrastado */
+  --card-bg: #ffffff;              /* tarjetas limpias */
+  --text-light: #2f3e46;           /* gris oscuro suave */
+  --text-muted: #6b7b83;           /* gris medio */
+  --text-accent: #5fa8d3;          /* azul pastel */
+  --border-color: #cdd6d8;         /* bordes suaves */
+  --shadow: 0 4px 20px rgba(175, 200, 195, 0.2);
+  --shadow-hover: 0 8px 30px rgba(150, 190, 180, 0.3);
+  --shadow-blue: 0 4px 20px rgba(95, 168, 211, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset y base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--text-light);
+  background: linear-gradient(135deg, var(--dark-bg), var(--primary-color));
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: var(--text-light);
+  padding: 2rem 0;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.15);
+  opacity: 0.2;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo i {
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+}
+
+.logo h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(45deg, var(--secondary-color), var(--text-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 3.5rem;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  width: 100%;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Cards */
+.dashboard-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.dashboard-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.card-header i {
+  margin-right: 0.75rem; /* separa el icono del texto */
+  font-size: 1.3rem;     /* opcional: ajusta el tamaño */
+  color: var(--secondary-color); /* mantiene tono coherente */
+}
+
+.card-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--accent-color);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.endpoint-badge {
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Formularios */
+.form {
+  padding: 2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  background: var(--accent-color);
+  color: var(--text-light);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+}
+
+input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--secondary-color), var(--success-color));
+  color: var(--accent-color);
+  box-shadow: var(--shadow-blue);
+  margin-top: 1.5
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.form .btn {
+  margin-top: 1.5rem; /* separa el botón del campo anterior */
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Info y logs */
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(168, 218, 220, 0.2);
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.info-item strong {
+  color: var(--text-light);
+}
+
+/* Código */
+code {
+  background: rgba(69, 123, 157, 0.1);
+  color: var(--text-accent);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Hack', 'Monaco', 'Menlo', monospace;
+}
+
+/* Footer */
+.footer {
+  background: var(--secondary-color);
+  color: var(--accent-color);
+  padding: 1rem 0;
+  margin-top: auto;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.footer-links a {
+  color: var(--accent-color);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--warning-color);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--accent-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}

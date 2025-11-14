@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MindTracker App</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="./login.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <i class="fa-solid fa-brain"></i><h1>MindTracker App</h1>
+    <p>Bienvenid@, inicia sesión para continuar</p>
+  </header>
+
+<main class="main-content">
+
+  <!-- LOGIN -->
+  <div class="login-card">
+    <h2>Inicia sesión</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="email-login">Email</label>
+        <input type="email" id="email-login" name="email" placeholder="Tu email" required>
+      </div>
+      <div class="form-group">
+        <label for="password-login">Contraseña</label>
+        <input type="password" id="password-login" name="password" placeholder="Tu contraseña" required>
+      </div>
+      <p class="forgot-password">
+        <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+      </p>
+      <button type="submit" class="btn-submit">Iniciar sesión</button>
+    </form>
+
+    <!-- Google OAuth -->
+    <a href="/auth/google" class="btn-google">
+      <span class="google-logo">
+        <svg width="18" height="18" viewBox="0 0 533.5 544.3">
+          <path fill="#4285F4" d="M533.5 278.4c0-17.3-1.4-34-4.1-50.3H272v95.1h146.9c-6.3 33.7-25 62.2-53.3 81.5v67h86.3c50.6-46.7 80.6-115.5 80.6-193.3z"/>
+          <path fill="#34A853" d="M272 544.3c72.8 0 133.9-24.1 178.5-65.3l-86.3-67c-24 16.1-54.8 25.6-92.2 25.6-70.8 0-130.7-47.8-152.1-112.2H32.1v70.4c44.7 88 135.7 148.5 239.9 148.5z"/>
+          <path fill="#FBBC05" d="M119.9 314.8c-10.5-31.3-10.5-65 0-96.3V148.1H32.1c-41.8 82.5-41.8 181.2 0 263.7l87.8-70.4z"/>
+          <path fill="#EA4335" d="M272 107.3c38.9-.6 75.8 14.2 103.7 41.6l77.7-77.7C405.9 23.1 343.7-1 272 0 167.8 0 76.8 60.5 32.1 148.1l87.8 70.4c21.4-64.4 81.3-112.2 152.1-111.2z"/>
+        </svg>
+      </span>
+      Sign in with Google
+    </a>
+  </div>
+
+  <!-- REGISTRO -->
+  <div class="login-card">
+    <h2>Si no tienes usuario, ¡Regístrate!</h2>
+    <form id="register-form">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Número de teléfono</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono" required>
+      </div>
+      <div class="form-group">
+        <label for="email-reg">Email</label>
+        <input type="email" id="email-reg" name="email" placeholder="Tu email" required>
+      </div>
+      <div class="form-group">
+        <label for="password-reg">Contraseña</label>
+        <input type="password" id="password-reg" name="password" placeholder="Contraseña" required>
+      </div>
+      <div class="form-group">
+        <label for="password2">Repetir contraseña</label>
+        <input type="password" id="password2" name="password2" placeholder="Repite la contraseña" required>
+      </div>
+      <button type="submit" class="btn-submit">Crear usuario</button>
+    </form>
+  </div>
+
+</main>
+
+<!-- SCRIPT -->
+<script src="login.js"></script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 MindTracker App. Todos los derechos reservados. <a href="#">Política de privacidad</a></p>
+  </footer>
+
+</body>
+</html>
