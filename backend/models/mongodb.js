@@ -86,15 +86,60 @@ export class UserModel {
 }
 
 export class MoodModel {
-  static async create ({ userId, mood, notes, date }) {
+  static async create ({
+    userId,
+    mood,
+    depositionalRhythm,
+    libido,
+    sportHours,
+    healthyFood,
+    junkFood,
+    pains,
+    sleepHours,
+    notes,
+    date
+  }) {
+    // Validaciones
     const moodValue = Number(mood)
     if (isNaN(moodValue) || moodValue < 0 || moodValue > 10) {
-      throw new Error('The mood value must be between 0 and 10')
+      throw new Error('Mood must be between 0 and 10')
+    }
+
+    const libidoValue = Number(libido)
+    if (isNaN(libidoValue) || libidoValue < 1 || libidoValue > 10) {
+      throw new Error('Libido must be between 1 and 10')
+    }
+
+    const sportHoursValue = Number(sportHours)
+    if (isNaN(sportHoursValue) || sportHoursValue < 0 || sportHoursValue > 24) {
+      throw new Error('Sport hours must be between 0 and 24')
+    }
+
+    // Opciones permitidas
+    const rhythmOptions = ['Excellent', 'Good', 'Normal', 'Bad', 'Very Bad']
+    const foodOptions = ['Excellent', 'Good', 'Normal', 'Bad', 'Very Bad']
+    const junkOptions = ['None', 'Little', 'Overeaten']
+    const sleepOptions = ['8 hours', 'More than 8 hours', 'Less than 8 hours']
+    const painOptions = ['None', 'Head', 'Neck', 'Back', 'Legs', 'Arms', 'Abdomen']
+
+    if (!rhythmOptions.includes(depositionalRhythm)) throw new Error('Invalid depositional rhythm')
+    if (!foodOptions.includes(healthyFood)) throw new Error('Invalid healthy food value')
+    if (!junkOptions.includes(junkFood)) throw new Error('Invalid junk food value')
+    if (!sleepOptions.includes(sleepHours)) throw new Error('Invalid sleep hours value')
+    if (!Array.isArray(pains) || !pains.every(p => painOptions.includes(p))) {
+      throw new Error('Invalid pains selection')
     }
 
     const newMood = {
       userId: new ObjectId(userId),
       mood: moodValue,
+      depositionalRhythm,
+      libido: libidoValue,
+      sportHours: sportHoursValue,
+      healthyFood,
+      junkFood,
+      pains,
+      sleepHours,
       notes,
       date: date ? new Date(date) : new Date()
     }

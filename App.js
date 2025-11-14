@@ -10,7 +10,7 @@ const app = express()
 // Middleware de cookies ANTES de las rutas
 app.use(cookieParser())
 app.use(cors({
-  origin: 'http://localhost:5500', // tu frontend
+  origin: [/^http:\/\/localhost:\d+$/], // tu frontend
   credentials: true
 }))
 app.use(express.static('frontend'))
