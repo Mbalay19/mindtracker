@@ -1,0 +1,13 @@
+Campos a añadir en el formulario:
+
+- Estado emocional
+- Clima
+- Habitos
+- Menstruacion (opcional mujer, poner en formulario de registro el genero)
+- Situacion en el trabajo
+- Sociabilizar
+Comprobar endpoints desde el frontend. Crear, Leer, Actualizar y borrar.
+Login a prueba de balas.
+Menu admin
+Dashboard con chart.js para hacer un seguimiento de los estados de animo, deporte etc.
+En el futuro, openai api o de claude para hacer pequeñas recomendaciones segun prompts y notas diversas.
