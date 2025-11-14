@@ -41,4 +41,4 @@ moodRouter.post('/auth/logout', (req, res) => {
 // TO DO. Añadir admin para rutas protegidas
 
 moodRouter.post('/api/users/moods', verifyToken, MoodController.addMood)
-moodRouter.post('/api/users/logs', verifyToken, MoodController.getLogs)
+moodRouter.get('/api/users/logs', verifyToken, MoodController.getLogs)

@@ -2,42 +2,6 @@
 const moodForm = document.getElementById('mood-form')
 const dateInput = document.getElementById('date')
 
-// Fecha actual como fecha por defecto
-dateInput.valueAsDate = new Date()
-
-// Submit del mood
-moodForm.addEventListener('submit', async (e) => {
-  e.preventDefault()
-
-  const data = {
-    mood: document.getElementById('mood').value,
-    notes: document.getElementById('notes').value,
-    date: document.getElementById('date').value
-  }
-
-  try {
-    const res = await fetch('/api/users/moods', { // CORREGIDO: endpoint correcto
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-      credentials: 'include' // Envía la cookie
-    })
-
-    const result = await res.json()
-    if (res.ok) {
-      alert('Mood agregado exitosamente!')
-      moodForm.reset()
-      dateInput.valueAsDate = new Date()
-      loadMoodLogs() // Recargar logs
-    } else {
-      alert(result.error || 'Error al agregar mood. Completa todos los campos.')
-    }
-  } catch (error) {
-    console.error(error)
-    alert('Error de conexión al servidor')
-  }
-})
-
 // Cargar logs al iniciar
 async function loadMoodLogs () {
   try {
@@ -67,9 +31,43 @@ async function loadMoodLogs () {
     console.error('Error:', error)
   }
 }
-
-// Cargar logs al iniciar la página
 loadMoodLogs()
+
+// Fecha actual como fecha por defecto
+dateInput.valueAsDate = new Date()
+
+// Submit del mood
+moodForm.addEventListener('submit', async (e) => {
+  e.preventDefault()
+
+  const data = {
+    mood: document.getElementById('mood').value,
+    notes: document.getElementById('notes').value,
+    date: document.getElementById('date').value
+  }
+
+  try {
+    const res = await fetch('/api/users/moods', { // CORREGIDO: endpoint correcto
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      credentials: 'include' // Envía la cookie
+    })
+    if (!res.ok) {
+      const result = await res.json()
+      alert(result.error || 'Error al agregar mood')
+    } else {
+      alert('Mood agregado exitosamente!')
+      moodForm.reset()
+      dateInput.valueAsDate = new Date()
+      loadMoodLogs()
+      // Recargar logs
+    }
+  } catch (error) {
+    console.error(error)
+    alert('Error de conexión al servidor')
+  }
+})
 
 // Logout
 const logoutBtn = document.getElementById('logout-btn')

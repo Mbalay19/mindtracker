@@ -3,11 +3,16 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { moodRouter } from './backend/routes/moods.js'
 import passport from './backend/config/passport.js'
+import cors from 'cors'
 
 const app = express()
 
 // Middleware de cookies ANTES de las rutas
 app.use(cookieParser())
+app.use(cors({
+  origin: 'http://localhost:5500', // tu frontend
+  credentials: true
+}))
 app.use(express.static('frontend'))
 app.use(express.urlencoded({ extended: false }))
 app.use(json())
